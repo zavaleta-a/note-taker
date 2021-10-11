@@ -1,6 +1,8 @@
 // Setup
 const express = require("express");
 const require = require("path");
+// Must be able to write and save notes (use fs module to write and receive notes)
+const fs = require('fs');
 
 const app = express();
 const PORT = 3001;
@@ -21,11 +23,10 @@ app.listen(PORT, () => console.log(`Listening at http://localhost:${PORT}`));
 
 // Need a landing page with a link to the notes page
 
-// Must be able to write and save notes
+
 
 // db.json will be used to store and retrieve notes
 
-// use fs module to write and receive notes
 
 // Create routes;
 // GET /notes should return notes.html
@@ -39,6 +40,6 @@ app.get('/api/notes', (req, res) => res.json(notes));
 app.post('/api/notes', (req, res) => {
   let newNote = req.body;
   notes.push(newNote);
-  console.log("new note added!")
+  console.log("new note added!");
 }
 // give each note a unique id (look into npm package that will do this)
