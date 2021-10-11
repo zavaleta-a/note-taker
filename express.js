@@ -19,6 +19,8 @@ app.get("/index", (req, res) =>
 
 app.listen(PORT, () => console.log(`Listening at http://localhost:${PORT}`));
 
+// Need a landing page with a link to the notes page
+
 // Must be able to write and save notes
 
 // db.json will be used to store and retrieve notes
@@ -27,10 +29,16 @@ app.listen(PORT, () => console.log(`Listening at http://localhost:${PORT}`));
 
 // Create routes;
 // GET /notes should return notes.html
+
 // GET * should return index.html
 
 // Create API routes;
 //  GET /api/notes (should read db.json and return all saved notes)
-// POST /api/notes (should receive new note, add it to the db.json,
-//  then return the new note)
+app.get('/api/notes', (req, res) => res.json(notes));
+// POST /api/notes (should receive new note, add it to the db.json, then return the new note)
+app.post('/api/notes', (req, res) => {
+  let newNote = req.body;
+  notes.push(newNote);
+  console.log("new note added!")
+}
 // give each note a unique id (look into npm package that will do this)
