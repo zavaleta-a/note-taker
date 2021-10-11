@@ -19,6 +19,7 @@ app.get("/index", (req, res) =>
   res.sendFile(path.join(__dirname, "public/index.html"))
 );
 
+// Set up listener to PORT
 app.listen(PORT, () => console.log(`Listening at http://localhost:${PORT}`));
 
 // Need a landing page with a link to the notes page
@@ -32,7 +33,9 @@ app.listen(PORT, () => console.log(`Listening at http://localhost:${PORT}`));
 // GET /notes should return notes.html
 
 // GET * should return index.html
-
+app.get('*', (req, res) => {
+  res.sendFile(path.join__dirname, '../public/index.html')
+});
 // Create API routes;
 //  GET /api/notes (should read db.json and return all saved notes)
 app.get('/api/notes', (req, res) => res.json(notes));
