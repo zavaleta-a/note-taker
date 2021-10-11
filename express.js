@@ -5,18 +5,25 @@
 // Setup
 const express = require("express");
 const path = require("path");
+const data = require("./Develop/db");
 // Must be able to write and save notes (use fs module to write and receive notes)
 const fs = require("fs");
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 app.use(express.static("public"));
 
-//---------------------------------------//
+// Data parsing (middleware)
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+//---------------------------------------
 
 // Create routes;
-app.get("/", (req, res) => res.send("Navigate to /notes.html"));
+app.get("./public/.notes.html", (req, res) =>
+  res.send("Navigate to /notes.html")
+);
 // GET /notes should return notes.html
 app.get("/notes", (req, res) =>
   res.sendFile(path.join(__dirname, "./public/notes.html"))
@@ -26,15 +33,12 @@ app.get("/index", (req, res) =>
   res.sendFile(path.join(__dirname, "./public/index.html"))
 );
 
-// Set up listener to PORT
-app.listen(PORT, () => console.log(`Listening at http://localhost:${PORT}`));
-
 // GET * should return index.html
 app.get("*", (req, res) => {
   res.sendFile(path.join__dirname, "../public/index.html");
 });
 
-//---------------------------------//
+//---------------------------------
 
 // Create API routes;
 
@@ -46,3 +50,6 @@ app.post("/api/notes", (req, res) => {
   notes.push(newNote);
   console.log("new note added!");
 });
+
+// Set up listener to PORT
+app.listen(PORT, () => console.log(`Listening at http://localhost:${PORT}`));
