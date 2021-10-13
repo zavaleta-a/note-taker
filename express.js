@@ -5,7 +5,7 @@
 // Setup
 const express = require("express");
 const path = require("path");
-const data = require("./Develop/db");
+const data = require("./Develop/db/db.json");
 // Must be able to write and save notes (use fs module to write and receive notes)
 const fs = require("fs");
 
@@ -21,21 +21,21 @@ app.use(express.json());
 //---------------------------------------
 
 // Create routes;
-app.get("./public/.notes.html", (req, res) =>
-  res.send("Navigate to /notes.html")
-);
+app.get("./public/.notes.html", (req, res) => {
+  res.send("Navigate to /notes.html");
+});
 // GET /notes should return notes.html
-app.get("/notes", (req, res) =>
-  res.sendFile(path.join(__dirname, "./public/notes.html"))
-);
+app.get("/notes", (req, res) => {
+  res.sendFile(path.join(__dirname, "./public/notes.html"));
+});
 
-app.get("/index", (req, res) =>
-  res.sendFile(path.join(__dirname, "./public/index.html"))
-);
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/index.html"));
+});
 
 // GET * should return index.html
 app.get("*", (req, res) => {
-  res.sendFile(path.join__dirname, "../public/index.html");
+  res.sendFile(path.join__dirname, "/public/index.html");
 });
 
 //---------------------------------
