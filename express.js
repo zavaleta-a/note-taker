@@ -12,7 +12,7 @@ const fs = require("fs");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.use(express.static("public"));
+app.use(express.static(__dirname, "Develop", "public"));
 
 // Data parsing (middleware)
 app.use(express.urlencoded({ extended: true }));
@@ -26,16 +26,16 @@ app.get("./public/.notes.html", (req, res) => {
 });
 // GET /notes should return notes.html
 app.get("/notes", (req, res) => {
-  res.sendFile(path.join(__dirname, "./public/notes.html"));
+  res.sendFile(path.join(__dirname, "/Develop/public/notes.html"));
 });
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "/public/index.html"));
+  res.sendFile(path.join(__dirname, "/Develop/public/index.html"));
 });
 
 // GET * should return index.html
 app.get("*", (req, res) => {
-  res.sendFile(path.join__dirname, "/public/index.html");
+  res.sendFile(path.join__dirname, "/Develop/public/index.html");
 });
 
 //---------------------------------
