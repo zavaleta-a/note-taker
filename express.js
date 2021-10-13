@@ -12,7 +12,7 @@ const fs = require("fs");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.use(express.static(__dirname, "Develop", "public"));
+app.use(express.static(path.join(__dirname, "Develop", "public")));
 
 // Data parsing (middleware)
 app.use(express.urlencoded({ extended: true }));
