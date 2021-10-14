@@ -8,7 +8,7 @@ const fs = require("fs");
 // Create routes;
 
 router.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+  res.sendFile(path.join(__dirname, "develop/public/index.html"));
 });
 // GET /notes should return notes.html
 router.get("/notes", (req, res) => {
@@ -51,7 +51,7 @@ function updateDb(notes) {
 
 // GET * should return index.html
 router.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./develop/public/index.html"));
+  res.sendFile(path.join(__dirname, "develop/public/index.html"));
 });
 
 module.exports = router;
