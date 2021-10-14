@@ -23,6 +23,4 @@ app.use(routes);
 //---------------------------------------
 
 // Set up listener to PORT
-app.listen(process.env.PORT, () =>
-  console.log(`Listening at http://localhost:${PORT}`)
-);
+app.listen(PORT, () => console.log(`Listening at http://localhost:${PORT}`));
