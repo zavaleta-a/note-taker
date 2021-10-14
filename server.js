@@ -5,7 +5,7 @@
 // Setup
 const express = require("express");
 const path = require("path");
-const data = require("./develop/db/db");
+
 
 // Must be able to write and save notes (use fs module to write and receive notes)
 const fs = require("fs");
@@ -14,7 +14,7 @@ const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.use(express.static(path.join(__dirname, "develop/public")));
+app.use(express.static(path.join(__dirname, "public")));
 
 // Data parsing (middleware)
 app.use(express.urlencoded({ extended: true }));

@@ -12,7 +12,7 @@ const fs = require("fs");
 // });
 // GET /notes should return notes.html
 router.get("/notes", (req, res) => {
-  res.sendFile(path.join(__dirname, "develop/public/notes.html"));
+  res.sendFile(path.join(__dirname, "public/notes.html"));
 });
 
 //---------------------------------
@@ -21,13 +21,13 @@ router.get("/notes", (req, res) => {
 
 //  GET /api/notes (should read db.json and return all saved notes)
 router.get("/api/notes", (req, res) => {
-  let notes = JSON.parse(fs.readFileSync("./develop/db/db.json"));
+  let notes = JSON.parse(fs.readFileSync("./db/db.json"));
   res.json(notes);
   console.log("si");
 });
 // POST /api/notes (should receive new note, add it to the db.json, then return the new note)
 router.post("/api/notes", (req, res) => {
-  let notes = JSON.parse(fs.readFileSync("./develop/db/db.json"));
+  let notes = JSON.parse(fs.readFileSync("./db/db.json"));
   let newNote = req.body;
   let id = notes.push(newNote);
   updateDb(notes);
@@ -37,7 +37,7 @@ router.post("/api/notes", (req, res) => {
 
 // update json with new notes
 function updateDb(notes) {
-  fs.writeFile("./develop/db/db.json", JSON.stringify(notes), (err) => {
+  fs.writeFile("./db/db.json", JSON.stringify(notes), (err) => {
     if (err) throw err;
     return true;
   });
@@ -51,7 +51,7 @@ function updateDb(notes) {
 
 // GET * should return index.html
 router.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "develop/public/index.html"));
+  res.sendFile(path.join(__dirname, "public/index.html"));
 });
 
 module.exports = router;
