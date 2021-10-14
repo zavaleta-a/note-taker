@@ -29,8 +29,7 @@ router.get("/api/notes", (req, res) => {
 router.post("/api/notes", (req, res) => {
   let notes = JSON.parse(fs.readFileSync("./develop/db/db.json"));
   let newNote = req.body;
-  let id =
-  notes.push(newNote);
+  let id = notes.push(newNote);
   updateDb(notes);
   console.log("new note added!");
   res.json(notes);
@@ -45,10 +44,10 @@ function updateDb(notes) {
 }
 
 // delete route
-app.delete(`/api/notes/${$noteId}`, function (req, res) {
-  console.log("note deleted!");
-  res.send("Note deleted");
-});
+// app.delete(`/api/notes/${$noteId}`, function (req, res) {
+//   console.log("note deleted!");
+//   res.send("Note deleted");
+// });
 
 // GET * should return index.html
 router.get("*", (req, res) => {
