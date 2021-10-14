@@ -8,7 +8,7 @@ const fs = require("fs");
 // Create routes;
 
 router.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "develop/public/index.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 // GET /notes should return notes.html
 router.get("/notes", (req, res) => {
